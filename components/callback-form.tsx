@@ -140,6 +140,20 @@ export function CallbackForm() {
       </div>
 
       <div>
+        <label htmlFor="email" className="block text-sm font-medium text-ink mb-1.5">
+          E-mail cím
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Opcionális. Ha szeretne visszaigazolást."
+          autoComplete="email"
+          className="w-full px-3.5 py-2.5 border border-line rounded-md text-base text-ink bg-paper focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
+        />
+      </div>
+
+      <div>
         <label htmlFor="message" className="block text-sm font-medium text-ink mb-1.5">
           Mi a gond?
         </label>

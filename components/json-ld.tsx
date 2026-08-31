@@ -1,14 +1,15 @@
-import { SITE, COMPANY } from '@/lib/site';
+import { SITE } from '@/lib/site';
 
 export function JsonLd() {
   const data = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'ProfessionalService',
     name: SITE.name,
     telephone: SITE.phone,
     email: SITE.email,
     url: SITE.url,
     image: `${SITE.url}/og-cover.png`,
+    priceRange: 'Ár telefonon egyeztetve',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Lövölde utca 24. 4/15.',

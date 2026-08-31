@@ -10,10 +10,12 @@ import { Portrait } from '@/components/sections/portrait';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/sections/footer';
 import { MobileCallBar } from '@/components/mobile-call-bar';
+import { JsonLd } from '@/components/json-ld';
 
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <Header />
       <main>
         <Hero />

@@ -1,26 +1,14 @@
 import type { MetadataRoute } from 'next';
 import { SITE } from '@/lib/site';
+import { ROUTES } from '@/lib/routes';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  return [
-    {
-      url: SITE.url,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${SITE.url}/aszf`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${SITE.url}/adatkezeles`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ];
+  
+  return ROUTES.map((route) => ({
+    url: `${SITE.url}${route.path === '/' ? '' : route.path}`,
+    lastModified: 'lastModified' in route ? new Date(route.lastModified) : now,
+    changeFrequency: route.changeFrequency as any,
+    priority: route.priority,
+  }));
 }

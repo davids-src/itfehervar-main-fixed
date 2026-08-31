@@ -1,9 +1,9 @@
 export const SITE = {
   name: 'IT Fehérvár',
   domain: 'itfehervar.hu',
-  url: 'https://itfehervar.hu',
-  phone: '+36 70 273 5532',
-  phoneHref: 'tel:+36702735532',
+  url: process.env.NEXT_PUBLIC_APP_URL || 'https://itfehervar.hu',
+  phone: process.env.NEXT_PUBLIC_SIRONIC_PHONE || '+36 70 273 5532',
+  get phoneHref() { return `tel:${this.phone.replace(/[\s-]/g, '')}` },
   email: 'szia@itfehervar.hu',
   area: 'Székesfehérvár és Fejér vármegye',
   hours: {
@@ -16,15 +16,11 @@ export const COMPANY = {
   legalName: 'SIROTECH Kft.',
   address: '8000 Székesfehérvár, Lövölde utca 24. 4/15.',
   taxNumber: '33056151-2-07',
-  // Cégjegyzékszám: később kerül kitöltésre
-  companyNumber: process.env.CEGJEGYZEKSZAM || '',
+  companyNumber: 'Cg. 07-09-037603',
 };
 
 export const ANALYTICS = {
-  ga4Id: process.env.NEXT_PUBLIC_GA4_ID || '',
-  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || '',
+  ga4Id: process.env.NEXT_PUBLIC_GA_ID || '',
 };
 
-export const isAnalyticsEnabled = Boolean(
-  ANALYTICS.ga4Id || ANALYTICS.metaPixelId,
-);
+export const isAnalyticsEnabled = Boolean(ANALYTICS.ga4Id);

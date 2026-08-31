@@ -4,10 +4,13 @@ import '@fontsource/archivo/latin-ext-800.css';
 import '@fontsource/ibm-plex-sans/latin-ext-400.css';
 import '@fontsource/ibm-plex-sans/latin-ext-500.css';
 import type { Metadata } from 'next';
-import { SITE, COMPANY, ANALYTICS } from '@/lib/site';
-import { JsonLd } from '@/components/json-ld';
+import { SITE } from '@/lib/site';
 import { Analytics } from '@/components/analytics';
 import { CookieBanner } from '@/components/cookie-banner';
+
+export const viewport = {
+  themeColor: '#1C3461',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -17,6 +20,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE.url,
   },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      'msvalidate.01': process.env.BING_SITE_VERIFICATION || '',
+    },
+  },
+  other: {
+    'geo.region': 'HU-FE',
+    'geo.placename': 'Székesfehérvár',
+    'ICBM': '47.191632, 18.420625',
+    'geo.position': '47.191632;18.420625',
+  },
   openGraph: {
     type: 'website',
     locale: 'hu_HU',
@@ -25,6 +40,8 @@ export const metadata: Metadata = {
     title: 'Számítógép- és internetszerelő Székesfehérváron — IT Fehérvár',
     description:
       'Kiszállunk Székesfehérváron és Fejér vármegyében: internet, wifi, lassú gép, nyomtató, vírus. Cégeknek és otthonra. Hívjon: +36 70 273 5532.',
+    emails: [SITE.email],
+    phoneNumbers: [SITE.phone],
     images: [
       {
         url: '/og-cover.png',
@@ -44,6 +61,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   icons: {
     icon: [
@@ -51,7 +75,6 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
-  themeColor: '#1C3461',
 };
 
 export default function RootLayout({
@@ -62,7 +85,6 @@ export default function RootLayout({
   return (
     <html lang="hu">
       <body className="font-sans text-ink antialiased">
-        <JsonLd />
         <Analytics />
         {children}
         <CookieBanner />
