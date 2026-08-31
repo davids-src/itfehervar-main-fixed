@@ -3,8 +3,8 @@ import { SITE, COMPANY } from '@/lib/site';
 
 export function Footer() {
   const companyLine = COMPANY.companyNumber
-    ? `Az IT Fehérvár szolgáltatást a ${COMPANY.legalName} nyújtja. Székhely: ${COMPANY.address}. Adószám: ${COMPANY.taxNumber}. Cégjegyzékszám: ${COMPANY.companyNumber}.`
-    : `Az IT Fehérvár szolgáltatást a ${COMPANY.legalName} nyújtja. Székhely: ${COMPANY.address}. Adószám: ${COMPANY.taxNumber}.`;
+    ? `Az IT Fehérvár szolgáltatást a ${COMPANY.legalName} nyújtja. Székhely: ${COMPANY.address}. Adószám: ${COMPANY.taxNumber}. Cégjegyzékszám: ${COMPANY.companyNumber}. Képviselő: ${COMPANY.representative}.`
+    : `Az IT Fehérvár szolgáltatást a ${COMPANY.legalName} nyújtja. Székhely: ${COMPANY.address}. Adószám: ${COMPANY.taxNumber}. Képviselő: ${COMPANY.representative}.`;
 
   return (
     <footer className="bg-navy-deep">

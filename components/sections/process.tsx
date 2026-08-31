@@ -3,7 +3,7 @@ import { ScrollReveal } from '@/components/scroll-reveal';
 const STEPS = [
   {
     title: 'Felhívja, és elmondja, mi a baj',
-    body: 'Kérdezünk pár dolgot, hogy tudjuk, mit vigyünk magunkkal. Ha távolról megoldható, meg sem várjuk a kiszállást.',
+    body: 'Kérdezünk pár dolgot, hogy tudjuk, mit vigyünk magunkkal, és egyeztetünk egy időpontot, ami Önnek is megfelel.',
   },
   {
     title: 'Kimegyünk a megbeszélt időpontban',

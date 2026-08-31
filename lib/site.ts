@@ -16,7 +16,8 @@ export const COMPANY = {
   legalName: 'SIROTECH Kft.',
   address: '8000 Székesfehérvár, Lövölde utca 24. 4/15.',
   taxNumber: '33056151-2-07',
-  companyNumber: 'Cg. 07-09-037603',
+  companyNumber: '07-09-037603',
+  representative: 'Skoda Dávid András',
 };
 
 export const ANALYTICS = {

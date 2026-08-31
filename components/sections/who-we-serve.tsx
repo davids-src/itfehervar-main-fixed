@@ -53,6 +53,11 @@ export function WhoWeServe() {
             </p>
           </div>
         </div>
+        <div className="mt-12 pt-6 border-t border-navy/10">
+          <p className="text-sm text-ink/70 leading-relaxed text-center sm:text-left">
+            Kiszállunk többek között Székesfehérváron, Dunaújvárosban, Bicskén, Móron, Gárdonyban, Martonvásáron, Sárbogárdon, Velencén, Polgárdiban, Abán, Bodajkon és Enyingen is — ha a település nincs a listán, hívjon, és megmondjuk, mikor tudunk menni.
+          </p>
+        </div>
       </ScrollReveal>
     </section>
   );

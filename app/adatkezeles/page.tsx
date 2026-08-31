@@ -15,8 +15,9 @@ export default function AdatkezelesPage() {
       <p>
         Adatkezelő: SIROTECH Informatikai és Biztonságtechnikai Kft.<br />
         Székhely: 8000 Székesfehérvár, Lövölde utca 24. 4/15.<br />
-        Cégjegyzékszám: Cg. 07-09-037603<br />
+        Cégjegyzékszám: 07-09-037603<br />
         Adószám: 33056151-2-07<br />
+        Képviselő: Skoda Dávid András<br />
         E-mail: szia@itfehervar.hu<br />
         Telefon: +36 70 273 5532
       </p>

@@ -1,7 +1,8 @@
-import { SITE } from '@/lib/site';
+import { SITE, COMPANY } from '@/lib/site';
+import { FAQ_ITEMS } from '@/components/sections/faq';
 
 export function JsonLd() {
-  const data = {
+  const serviceData = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: SITE.name,
@@ -18,6 +19,14 @@ export function JsonLd() {
       addressCountry: 'HU',
     },
     areaServed: ['Székesfehérvár', 'Fejér vármegye'],
+    taxID: COMPANY.taxNumber,
+    vatID: COMPANY.taxNumber,
+    parentOrganization: {
+      '@type': 'Organization',
+      name: COMPANY.legalName,
+      taxID: COMPANY.taxNumber,
+      vatID: COMPANY.taxNumber,
+    },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -40,10 +49,23 @@ export function JsonLd() {
     ],
   };
 
+  const faqData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceData, faqData]) }}
     />
   );
 }
