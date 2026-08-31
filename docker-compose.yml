@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    image: ghcr.io/${GITHUB_REPOSITORY:-your-org/itfehervar}:latest
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT:-3000}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - MAIL_TO=${MAIL_TO:-szia@itfehervar.hu}
+      - CEGJEGYZEKSZAM=${CEGJEGYZEKSZAM}
+      - NEXT_PUBLIC_GA4_ID=${NEXT_PUBLIC_GA4_ID}
+      - NEXT_PUBLIC_META_PIXEL_ID=${NEXT_PUBLIC_META_PIXEL_ID}
+    restart: unless-stopped
