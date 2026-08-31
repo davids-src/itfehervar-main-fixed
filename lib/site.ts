@@ -21,7 +21,7 @@ export const COMPANY = {
 };
 
 export const ANALYTICS = {
-  ga4Id: process.env.NEXT_PUBLIC_GA_ID || '',
+  ga4Id: 'G-8C38YTQSQ6',
 };
 
 export const isAnalyticsEnabled = Boolean(ANALYTICS.ga4Id);

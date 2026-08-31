@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import { ANALYTICS } from '@/lib/site';
 
-export function Analytics({ ga4Id }: { ga4Id?: string }) {
+export function Analytics() {
   const [consentGranted, setConsentGranted] = useState(false);
 
   useEffect(() => {
@@ -19,12 +19,12 @@ export function Analytics({ ga4Id }: { ga4Id?: string }) {
     return () => window.removeEventListener('cookieConsentGranted', checkConsent);
   }, []);
 
-  if (!ga4Id || !consentGranted) return null;
+  if (!ANALYTICS.ga4Id || !consentGranted) return null;
 
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.ga4Id}`}
         strategy="afterInteractive"
       />
       <Script id="ga4-init" strategy="afterInteractive">
@@ -32,7 +32,7 @@ export function Analytics({ ga4Id }: { ga4Id?: string }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${ga4Id}', { anonymize_ip: true });
+          gtag('config', '${ANALYTICS.ga4Id}', { anonymize_ip: true });
         `}
       </Script>
     </>
