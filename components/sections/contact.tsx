@@ -1,10 +1,11 @@
 import { CallbackForm } from '@/components/callback-form';
+import { ScrollReveal } from '@/components/scroll-reveal';
 import { SITE } from '@/lib/site';
 
 export function Contact() {
   return (
     <section id="kapcsolat" className="bg-mist">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-navy text-2xl sm:text-2xl tracking-tight">
           Hívjon, vagy kérje, hogy mi hívjuk vissza
         </h2>
@@ -18,7 +19,7 @@ export function Contact() {
         <div className="mt-8 max-w-xl">
           <CallbackForm />
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

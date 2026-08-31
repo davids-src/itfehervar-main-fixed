@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import { ANALYTICS } from '@/lib/site';
 
-export function Analytics() {
-  const ga4Id = ANALYTICS.ga4Id;
+export function Analytics({ ga4Id }: { ga4Id?: string }) {
   const [consentGranted, setConsentGranted] = useState(false);
 
   useEffect(() => {

@@ -1,3 +1,5 @@
+import { ScrollReveal } from '@/components/scroll-reveal';
+
 const PROBLEMS = [
   'Áll a net az irodában, senki nem tud dolgozni.',
   'Az üzletben elment a net, és nem megy a kártyás fizetés.',
@@ -12,7 +14,7 @@ const PROBLEMS = [
 export function Problems() {
   return (
     <section className="bg-paper">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-navy text-2xl sm:text-2xl tracking-tight">
           Ilyenekkel szoktak hívni minket
         </h2>
@@ -32,7 +34,7 @@ export function Problems() {
           Ha az Öné nincs a listán, akkor is hívjon. A legtöbb hiba pont így
           kezdődik.
         </p>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

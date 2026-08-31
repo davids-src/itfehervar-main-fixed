@@ -1,9 +1,10 @@
 import { SITE } from '@/lib/site';
+import { ScrollReveal } from '@/components/scroll-reveal';
 
 export function Pricing() {
   return (
     <section className="bg-navy-deep">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-white text-2xl sm:text-2xl tracking-tight">
           Mennyibe kerül?
         </h2>
@@ -32,7 +33,7 @@ export function Pricing() {
             Kérek visszahívást
           </a>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

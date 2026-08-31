@@ -1,7 +1,21 @@
+import { IconCheck } from '@/components/icons';
+import { ScrollReveal } from '@/components/scroll-reveal';
+
+const BUSINESS_ITEMS = [
+  'Több gép egy hálózaton',
+  'Közös mappa, amit mindenki elér',
+  'Céges e-mail beállítása új kollégának',
+  'Nyomtató, ami mindenkinek megy',
+  'Wifi, ami az üzlet vagy a raktár végében sem szakad meg',
+  'Stabil net a kamerarendszerhez, a pénztárgéphez, a kártyaterminálhoz',
+  'Rendszeres mentés, hogy egy meghibásodás ne vigye el a könyvelést',
+  'Új gépek beszerzése és beüzemelése, a régi adatainak átköltöztetésével',
+];
+
 export function WhoWeServe() {
   return (
     <section className="bg-paper">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-navy text-2xl sm:text-2xl tracking-tight">
           Kinek dolgozunk
         </h2>
@@ -11,15 +25,16 @@ export function WhoWeServe() {
             <h3 className="font-display font-bold text-navy text-xl leading-snug">
               Kisebb cégnek, boltnak, irodának, műhelynek
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-ink">
-              Több gép egy hálózaton. Közös mappa, amit mindenki elér. Céges
-              e-mail beállítása új kollégának. Nyomtató, ami mindenkinek megy.
-              Wifi, ami az üzlet vagy a raktár végében sem szakad meg. Stabil
-              net a kamerarendszerhez, a pénztárgéphez, a kártyaterminálhoz.
-              Rendszeres mentés, hogy egy meghibásodás ne vigye el a
-              könyvelést. Új gépek beszerzése és beüzemelése, a régi
-              adatainak átköltöztetésével.
-            </p>
+            <ul className="mt-4 space-y-2">
+              {BUSINESS_ITEMS.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <div className="mt-[4px] text-orange shrink-0">
+                    <IconCheck />
+                  </div>
+                  <span className="text-base leading-relaxed text-ink">{item}</span>
+                </li>
+              ))}
+            </ul>
             <p className="mt-4 text-base leading-relaxed text-ink">
               Ha valami leáll, felhív minket, és nem Önnek kell kitalálnia, kit
               hívjon.
@@ -38,7 +53,7 @@ export function WhoWeServe() {
             </p>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -5,11 +5,11 @@ import { isAnalyticsEnabled } from '@/lib/site';
 
 const STORAGE_KEY = 'analytics-consent';
 
-export function CookieBanner() {
+export function CookieBanner({ hasAnalytics }: { hasAnalytics: boolean }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!isAnalyticsEnabled) return;
+    if (!hasAnalytics) return;
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) setVisible(true);
 

@@ -1,3 +1,5 @@
+import { ScrollReveal } from '@/components/scroll-reveal';
+
 const STEPS = [
   {
     title: 'Felhívja, és elmondja, mi a baj',
@@ -35,7 +37,7 @@ function SignalBars({ count }: { count: number }) {
 export function Process() {
   return (
     <section className="bg-paper">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-navy text-2xl sm:text-2xl tracking-tight">
           Hogyan zajlik
         </h2>
@@ -64,7 +66,7 @@ export function Process() {
             </div>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

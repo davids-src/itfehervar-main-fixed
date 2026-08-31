@@ -1,9 +1,10 @@
 import { SITE } from '@/lib/site';
+import { ScrollReveal } from '@/components/scroll-reveal';
 
 export function RemoteHelp() {
   return (
     <section className="bg-orange-wash">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-navy text-2xl sm:text-2xl tracking-tight max-w-[20ch]">
           Sok mindent meg tudunk oldani kiszállás nélkül
         </h2>
@@ -26,7 +27,7 @@ export function RemoteHelp() {
             Hívás: {SITE.phone}
           </a>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

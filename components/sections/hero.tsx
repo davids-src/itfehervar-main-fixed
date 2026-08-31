@@ -31,7 +31,7 @@ export function Hero() {
             {SITE.hours.weekday}, {SITE.hours.saturday}
           </li>
           <li className="text-sm text-ink/80">{SITE.area}</li>
-          <li className="text-sm text-ink/80">Számlaképes, cégeknek is</li>
+          <li className="text-sm text-ink/80">Általában egy órán belül visszahívjuk</li>
         </ul>
       </div>
     </section>

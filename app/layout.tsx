@@ -82,12 +82,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const ga4Id = process.env.NEXT_PUBLIC_GA_ID || process.env.GA_ID;
+
   return (
     <html lang="hu">
       <body className="font-sans text-ink antialiased">
-        <Analytics />
+        <Analytics ga4Id={ga4Id} />
         {children}
-        <CookieBanner />
+        <CookieBanner hasAnalytics={!!ga4Id} />
       </body>
     </html>
   );

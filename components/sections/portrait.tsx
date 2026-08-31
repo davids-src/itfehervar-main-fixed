@@ -1,3 +1,5 @@
+import { ScrollReveal } from '@/components/scroll-reveal';
+
 const PORTRAIT_PHOTO = process.env.PORTRE_FOTO || '';
 
 export function Portrait() {
@@ -5,7 +7,7 @@ export function Portrait() {
 
   return (
     <section className="bg-paper">
-      <div className="mx-auto max-w-content px-5 py-12 sm:py-16">
+      <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <div className="flex flex-col sm:flex-row gap-8 items-start">
           <img
             src={PORTRAIT_PHOTO}
@@ -28,7 +30,7 @@ export function Portrait() {
             </p>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
