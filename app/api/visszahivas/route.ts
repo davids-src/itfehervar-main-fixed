@@ -68,7 +68,8 @@ export async function POST(request: Request) {
     const adminHtml = renderAdminNotification({ name, phone, company, message, ip, date });
     
     await transporter.sendMail({
-      from: `"IT Fehérvár" <szia@itfehervar.hu>`,
+      from: `"IT Fehérvár" <${smtpUser}>`,
+      replyTo: email || undefined,
       to: adminEmail,
       subject: `Új visszahívás-kérés — ${name} (${phone})`,
       html: adminHtml,
@@ -79,7 +80,7 @@ export async function POST(request: Request) {
       try {
         const customerHtml = renderCustomerConfirmation({ name, phone, message, siteUrl });
         await transporter.sendMail({
-          from: `"IT Fehérvár" <szia@itfehervar.hu>`,
+          from: `"IT Fehérvár" <${smtpUser}>`,
           to: email,
           subject: 'Megkaptuk a megkeresését — IT Fehérvár',
           html: customerHtml,
