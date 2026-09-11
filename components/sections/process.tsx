@@ -10,7 +10,7 @@ const STEPS = [
     body: 'Ha a helyszínen kiderül, hogy nagyobb munka lesz, előtte szólunk, mennyibe kerül. Addig nem csinálunk semmit.',
   },
   {
-    title: 'Megjavítjuk, és elmondjuk, mi volt',
+    title: 'Megjavítjuk',
     body: 'Számlát adunk, és ha pár nap múlva kérdés merül fel, nyugodtan hívhat.',
   },
 ];

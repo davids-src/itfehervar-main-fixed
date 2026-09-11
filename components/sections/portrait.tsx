@@ -23,10 +23,7 @@ export function Portrait() {
             <p className="mt-5 text-lg leading-relaxed text-ink max-w-[68ch]">
               Fehérvári vagyok, és évek óta ezzel foglalkozom. Gyártó cégek és
               irodák gépeit is én tartom karban, de a hívások többsége egyszerű
-              dologról szól: valami leállt, és nincs kit hívni. Nem szeretem, ha
-              valaki azért fizet, mert nem érti, mi történt a gépével. Ezért
-              mindig elmondom, mi volt a baj, és hogy mit tud legközelebb egyedül
-              megoldani.
+              dologról szól: valami leállt, és nincs kit hívni.
             </p>
           </div>
         </div>

@@ -4,13 +4,12 @@ export function Hero() {
   return (
     <section id="top" className="bg-paper hero-fade-in">
       <div className="mx-auto max-w-content px-5 pt-12 pb-10 sm:pt-16 sm:pb-14">
-        <h1 className="font-display font-extrabold text-navy text-[2.125rem] leading-[1.1] sm:text-3xl sm:leading-[1.1] tracking-tight max-w-[20ch]">
-          Ha megáll a net, a gép vagy a nyomtató, kimegyünk
+        <h1 className="font-display font-extrabold text-navy text-[2.125rem] leading-[1.1] sm:text-3xl sm:leading-[1.1] tracking-tight max-w-[28ch]">
+          Ha megáll, lelassul, az internet, a számítógép, vagy a nyomtató nem nyomtat, kimegyünk
         </h1>
         <p className="mt-5 text-lg leading-relaxed text-ink max-w-[68ch]">
           Kisebb cégeknek, boltoknak, irodáknak és otthonra Székesfehérváron és
-          Fejér vármegyében. A legtöbb hibát még aznap megjavítjuk, és utána
-          elmondjuk emberi nyelven, mi volt a baj.
+          Fejér vármegyében. A legtöbb hibát még aznap megoldjuk.
         </p>
         <div className="mt-7 flex flex-col sm:flex-row gap-3">
           <a

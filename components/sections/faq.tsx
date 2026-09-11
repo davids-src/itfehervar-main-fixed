@@ -15,7 +15,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Lassú lett a számítógépem, ez normális, vagy hiba?',
-    answer: 'A hirtelen belassulás leggyakrabban túltelt tárhelyre, elavult szoftverre vagy háttérben futó kártevőre vezethető vissza, és a legtöbb esetben javítható. Az IT Fehérvár helyszínen megnézi, mi okozza, és elmondja, mit érdemes tenni.',
+    answer: 'A hirtelen belassulás leggyakrabban túltelt tárhelyre, elavult szoftverre vagy háttérben futó kártevőre vezethető vissza, és a legtöbb esetben javítható. Az IT Fehérvár helyszínen megnézi és megoldja.',
   },
   {
     question: 'Vírusgyanú esetén kihez forduljak Székesfehérváron?',

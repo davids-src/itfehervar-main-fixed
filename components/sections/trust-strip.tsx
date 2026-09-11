@@ -13,8 +13,8 @@ const TRUST_ITEMS = [
     icon: IconClock,
   },
   {
-    title: 'Érthetően elmondjuk, mi volt',
-    body: 'Szakszavak nélkül. Azt is, hogy legközelebb mit tud egyedül megoldani.',
+    title: 'Megjavítjuk, nem csak megnézzük',
+    body: 'Nem magyarázatot kap, hanem működő gépet, internetet vagy nyomtatót.',
     icon: IconSpeechBubble,
   },
   {
