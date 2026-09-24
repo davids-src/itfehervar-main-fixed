@@ -9,7 +9,7 @@ export function JsonLd() {
     telephone: SITE.phone,
     email: SITE.email,
     url: SITE.url,
-    image: `${SITE.url}/og-cover.png`,
+    image: `${SITE.url}/brand/it-fehervar-logo.png`,
     priceRange: 'Ár telefonon egyeztetve',
     address: {
       '@type': 'PostalAddress',

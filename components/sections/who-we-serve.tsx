@@ -28,7 +28,7 @@ export function WhoWeServe() {
             <ul className="mt-4 space-y-2">
               {BUSINESS_ITEMS.map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
-                  <div className="mt-[4px] text-orange shrink-0">
+                  <div className="mt-[4px] text-red shrink-0">
                     <IconCheck />
                   </div>
                   <span className="text-base leading-relaxed text-ink">{item}</span>

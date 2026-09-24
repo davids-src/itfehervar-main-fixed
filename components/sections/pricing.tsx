@@ -22,7 +22,7 @@ export function Pricing() {
         <div className="mt-7 flex flex-col sm:flex-row gap-3">
           <a
             href={SITE.phoneHref}
-            className="inline-flex items-center justify-center px-6 py-3.5 bg-orange text-white font-display font-bold rounded-md text-base hover:bg-orange/90 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3.5 bg-red text-white font-display font-bold rounded-md text-base hover:bg-red/90 transition-colors"
           >
             Hívás: {SITE.phone}
           </a>

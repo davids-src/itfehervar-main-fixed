@@ -29,7 +29,7 @@ export function LegalPage({
           <div className="mt-12">
             <a
               href="/"
-              className="text-navy font-medium hover:text-orange transition-colors"
+              className="text-navy font-medium hover:text-red transition-colors"
             >
               ← Vissza a főoldalra
             </a>

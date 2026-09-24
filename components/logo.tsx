@@ -7,28 +7,19 @@ interface LogoProps {
 }
 
 export function Logo({ className, variant = 'dark' }: LogoProps) {
-  const iconSrc = variant === 'dark' ? '/icon-mark.png' : '/icon-mark-light.png';
-  const textColor = variant === 'dark' ? 'text-navy' : 'text-white';
-
+  // Both variants use the same full-colour logo (white-background header & footer)
+  // If a light/dark-background variant is ever needed, swap src here.
   return (
-    <span className={cn('inline-flex items-center gap-2', className)}>
+    <span className={cn('inline-flex items-center', className)}>
       <Image
-        src={iconSrc}
-        alt=""
-        width={32}
-        height={38}
+        src="/itfehervar_logo_new.png"
+        alt="IT Fehérvár"
+        width={180}
+        height={48}
         className="h-full w-auto"
         priority
       />
-      <span
-        className={cn(
-          'font-display font-extrabold tracking-tight leading-none',
-          textColor
-        )}
-        style={{ fontSize: '1.25em' }}
-      >
-        IT Fehérvár
-      </span>
     </span>
   );
 }
+

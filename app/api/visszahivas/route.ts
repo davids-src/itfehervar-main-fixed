@@ -15,9 +15,12 @@ export async function POST(request: Request) {
 
     const name = (formData.get('name') as string)?.trim();
     const phone = (formData.get('phone') as string)?.trim();
-    const company = (formData.get('company') as string)?.trim();
-    const email = (formData.get('email') as string)?.trim();
+    const customer_type = (formData.get('customer_type') as string)?.trim();
+    const request_type = (formData.get('request_type') as string)?.trim();
     const message = (formData.get('message') as string)?.trim();
+    const first_touch = (formData.get('first_touch') as string)?.trim();
+    const last_touch = (formData.get('last_touch') as string)?.trim();
+    const location = (formData.get('location') as string)?.trim() || 'ismeretlen hely';
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -32,7 +35,6 @@ export async function POST(request: Request) {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const adminEmail = process.env.SIROTECH_ADMIN_EMAIL;
-    const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://itfehervar.hu';
 
     if (!smtpHost || !smtpUser || !smtpPass || !adminEmail) {
       console.error('SMTP or Admin Email env vars not configured', { smtpHost, smtpUser, smtpPass, adminEmail });
@@ -52,7 +54,6 @@ export async function POST(request: Request) {
       },
     });
 
-    // Formatting date
     const date = new Intl.DateTimeFormat('hu-HU', {
       year: 'numeric',
       month: '2-digit',
@@ -65,31 +66,17 @@ export async function POST(request: Request) {
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined;
 
     // Send Admin Email
-    const adminHtml = renderAdminNotification({ name, phone, company, message, ip, date });
+    const adminHtml = renderAdminNotification({ name, phone, customer_type, request_type, location, message, first_touch, last_touch, ip, date });
     
+    const reqTypeStr = request_type || 'N/A';
+    const custTypeStr = customer_type || 'N/A';
+
     await transporter.sendMail({
       from: `"IT Fehérvár" <${smtpUser}>`,
-      replyTo: email || undefined,
       to: adminEmail,
-      subject: `Új visszahívás-kérés — ${name} (${phone})`,
+      subject: `[IT FEHÉRVÁR] ${reqTypeStr} | ${custTypeStr} | ${location}`,
       html: adminHtml,
     });
-
-    // Send Customer Email if email provided
-    if (email) {
-      try {
-        const customerHtml = renderCustomerConfirmation({ name, phone, message, siteUrl });
-        await transporter.sendMail({
-          from: `"IT Fehérvár" <${smtpUser}>`,
-          to: email,
-          subject: 'Megkaptuk a megkeresését — IT Fehérvár',
-          html: customerHtml,
-        });
-      } catch (err) {
-        // Log but do not block successful response if admin email went through
-        console.error('Failed to send customer confirmation email:', err);
-      }
-    }
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {

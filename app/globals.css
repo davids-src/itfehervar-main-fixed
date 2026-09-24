@@ -28,7 +28,7 @@
   }
 
   ::selection {
-    background-color: #D9482B;
+    background-color: #E3262E;
     color: #FFFFFF;
   }
 }
@@ -40,7 +40,7 @@
   input:focus-visible,
   textarea:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid #D9482B;
+    outline: 2px solid #E3262E;
     outline-offset: 2px;
     border-radius: 2px;
   }

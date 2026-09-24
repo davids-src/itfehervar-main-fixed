@@ -11,6 +11,17 @@ export function CallbackForm() {
   const [rateLimited, setRateLimited] = useState(false);
   const lastSubmitRef = useRef<number>(0);
 
+  const [formStarted, setFormStarted] = useState(false);
+
+  const handleFormInteraction = () => {
+    if (!formStarted) {
+      setFormStarted(true);
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({ event: 'form_start', form_type: 'callback' });
+      }
+    }
+  };
+
   const validate = (data: FormData) => {
     const errs: Record<string, string> = {};
     const name = (data.get('name') as string)?.trim();
@@ -37,15 +48,33 @@ export function CallbackForm() {
 
     const errs = validate(data);
     setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
+    if (Object.keys(errs).length > 0) {
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({ event: 'form_error', form_type: 'callback', error_type: 'validation' });
+      }
+      return;
+    }
 
-    // Simple client-side rate limit: 1 per 60 seconds
     const now = Date.now();
     if (now - lastSubmitRef.current < 60000) {
       setRateLimited(true);
       return;
     }
     lastSubmitRef.current = now;
+
+    // Add tracking data
+    try {
+      const firstTouch = localStorage.getItem('attribution_first_touch');
+      const lastTouch = localStorage.getItem('attribution_last_touch');
+      if (firstTouch) data.append('first_touch', firstTouch);
+      if (lastTouch) data.append('last_touch', lastTouch);
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+    
+    const customerType = data.get('customer_type') as string;
+    const requestType = data.get('request_type') as string;
+    const location = data.get('location') as string;
 
     setStatus('submitting');
     try {
@@ -56,8 +85,22 @@ export function CallbackForm() {
       if (!res.ok) throw new Error('Request failed');
       setStatus('success');
       form.reset();
+      
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({
+          event: 'generate_lead',
+          form_type: 'callback',
+          customer_type: customerType,
+          request_type: requestType,
+          location_region: location,
+          landing_page: window.location.pathname
+        });
+      }
     } catch {
       setStatus('error');
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({ event: 'form_error', form_type: 'callback', error_type: 'api' });
+      }
     }
   };
 
@@ -67,7 +110,7 @@ export function CallbackForm() {
         <p className="text-base leading-relaxed text-ink">
           Megkaptuk. Általában egy órán belül visszahívjuk a megadott számon. Ha
           sürgős, hívjon minket a{' '}
-          <a href={SITE.phoneHref} className="font-semibold text-orange hover:underline">
+          <a href={SITE.phoneHref} className="font-semibold text-red hover:underline">
             {SITE.phone}
           </a>{' '}
           számon.
@@ -77,7 +120,7 @@ export function CallbackForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit} onChange={handleFormInteraction} noValidate className="space-y-4">
       {/* Honeypot */}
       <div className="hidden" aria-hidden="true">
         <label>
@@ -88,7 +131,7 @@ export function CallbackForm() {
 
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-ink mb-1.5">
-          Név <span className="text-orange">*</span>
+          Név <span className="text-red">*</span>
         </label>
         <input
           id="name"
@@ -101,13 +144,13 @@ export function CallbackForm() {
           aria-describedby={errors.name ? 'name-error' : undefined}
         />
         {errors.name && (
-          <p id="name-error" className="mt-1 text-sm text-orange">{errors.name}</p>
+          <p id="name-error" className="mt-1 text-sm text-red">{errors.name}</p>
         )}
       </div>
 
       <div>
         <label htmlFor="phone" className="block text-sm font-medium text-ink mb-1.5">
-          Telefonszám <span className="text-orange">*</span>
+          Telefonszám <span className="text-red">*</span>
         </label>
         <input
           id="phone"
@@ -121,41 +164,68 @@ export function CallbackForm() {
           aria-describedby={errors.phone ? 'phone-error' : undefined}
         />
         {errors.phone && (
-          <p id="phone-error" className="mt-1 text-sm text-orange">{errors.phone}</p>
+          <p id="phone-error" className="mt-1 text-sm text-red">{errors.phone}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-ink mb-1.5">
-          Cég neve
+        <label htmlFor="customer_type" className="block text-sm font-medium text-ink mb-1.5">
+          Magánszemély / vállalkozás
         </label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          placeholder="Ha céghez hívna minket."
-          autoComplete="organization"
+        <select
+          id="customer_type"
+          name="customer_type"
           className="w-full px-3.5 py-2.5 border border-line rounded-md text-base text-ink bg-paper focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
-        />
+          onChange={(e) => {
+            if (typeof window !== 'undefined' && (window as any).dataLayer) {
+              (window as any).dataLayer.push({ event: 'customer_type_select', customer_type: e.target.value });
+            }
+          }}
+        >
+          <option value="Magánszemély">Magánszemély</option>
+          <option value="Vállalkozás">Vállalkozás</option>
+        </select>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-ink mb-1.5">
-          E-mail cím
+        <label htmlFor="request_type" className="block text-sm font-medium text-ink mb-1.5">
+          Miben segíthetünk?
+        </label>
+        <select
+          id="request_type"
+          name="request_type"
+          className="w-full px-3.5 py-2.5 border border-line rounded-md text-base text-ink bg-paper focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
+          onChange={(e) => {
+            if (typeof window !== 'undefined' && (window as any).dataLayer) {
+              (window as any).dataLayer.push({ event: 'request_type_select', request_type: e.target.value });
+            }
+          }}
+        >
+          <option value="Hibajavítás">Hibajavítás</option>
+          <option value="Beállítás">Beállítás</option>
+          <option value="Bővítés">Bővítés</option>
+          <option value="Új rendszer/iroda">Új rendszer/iroda</option>
+          <option value="Hosszú távú támogatás">Hosszú távú támogatás</option>
+          <option value="Egyéb">Egyéb</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="location" className="block text-sm font-medium text-ink mb-1.5">
+          Helyszín (Település)
         </label>
         <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Opcionális. Ha szeretne visszaigazolást."
-          autoComplete="email"
+          id="location"
+          name="location"
+          type="text"
+          placeholder="Pl. Székesfehérvár"
           className="w-full px-3.5 py-2.5 border border-line rounded-md text-base text-ink bg-paper focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
         />
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-ink mb-1.5">
-          Mi a gond?
+          Rövid leírás (Mi a gond?)
         </label>
         <textarea
           id="message"
@@ -178,26 +248,26 @@ export function CallbackForm() {
           />
           <span className="text-sm leading-relaxed text-ink">
             Hozzájárulok, hogy visszahívás céljából felvegyék velem a kapcsolatot.{' '}
-            <a href="/adatkezeles" className="text-navy underline hover:text-orange transition-colors">
+            <a href="/adatkezeles" className="text-navy underline hover:text-red transition-colors">
               Adatkezelési tájékoztató
             </a>
-            <span className="text-orange"> *</span>
+            <span className="text-red"> *</span>
           </span>
         </label>
         {errors.consent && (
-          <p id="consent-error" className="mt-1 text-sm text-orange">{errors.consent}</p>
+          <p id="consent-error" className="mt-1 text-sm text-red">{errors.consent}</p>
         )}
       </div>
 
       {status === 'error' && (
-        <p className="text-base leading-relaxed text-orange">
+        <p className="text-base leading-relaxed text-red">
           Nem sikerült elküldeni. Hívjon minket a {SITE.phone} számon, vagy
           próbálja újra pár perc múlva.
         </p>
       )}
 
       {rateLimited && (
-        <p className="text-sm text-orange">
+        <p className="text-sm text-red">
           Egy percenként csak egy kérést küldhet. Kérjük, várjon egy kicsit.
         </p>
       )}
@@ -205,7 +275,7 @@ export function CallbackForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-orange text-white font-display font-bold rounded-md text-base hover:bg-orange/90 transition-colors disabled:opacity-60"
+        className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-red text-white font-display font-bold rounded-md text-base hover:bg-red/90 transition-colors disabled:opacity-60"
       >
         {status === 'submitting' ? 'Küldés…' : 'Visszahívást kérek'}
       </button>

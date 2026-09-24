@@ -1,14 +1,12 @@
 import { ScrollReveal } from '@/components/scroll-reveal';
 
 const PROBLEMS = [
-  'Áll a net az irodában, senki nem tud dolgozni.',
-  'Az üzletben elment a net, és nem megy a kártyás fizetés.',
-  'Nem érjük el a közös mappát, pedig tegnap még ment.',
-  'Hétfőn jön az új kolléga, kellene neki egy beállított gép.',
-  'A wifi a raktár végében folyton megszakad.',
-  'Belassult a gép, mindenre percekig várunk.',
-  'Nem tudok nyomtatni, pedig tegnap még ment.',
-  'Otthon eltűnt egy mappa, és nem találom a fényképeimet.',
+  'Lassú vagy hibás számítógép',
+  'Wi-Fi vagy internet probléma',
+  'Nyomtató és hálózati hiba',
+  'Új gép vagy munkaállomás beállítása',
+  'Céges hálózat bővítése',
+  'Új iroda informatikai kialakítása',
 ];
 
 export function Problems() {
@@ -16,7 +14,7 @@ export function Problems() {
     <section className="bg-paper">
       <ScrollReveal className="mx-auto max-w-content px-5 py-12 sm:py-16">
         <h2 className="font-display font-extrabold text-navy text-2xl sm:text-2xl tracking-tight">
-          Ilyenekkel szoktak hívni minket
+          Ilyenekkel szoktak keresni minket
         </h2>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {PROBLEMS.map((problem) => (

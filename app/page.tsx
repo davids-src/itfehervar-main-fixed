@@ -1,8 +1,11 @@
 import { Header } from '@/components/sections/header';
 import { Hero } from '@/components/sections/hero';
+import { BalanceSection } from '@/components/sections/balance-section';
 import { TrustStrip } from '@/components/sections/trust-strip';
+import { ProjectStrip } from '@/components/sections/project-strip';
 import { Problems } from '@/components/sections/problems';
 import { WhoWeServe } from '@/components/sections/who-we-serve';
+import { ProfessionalBacking } from '@/components/sections/professional-backing';
 import { Process } from '@/components/sections/process';
 import { Pricing } from '@/components/sections/pricing';
 import { Portrait } from '@/components/sections/portrait';
@@ -21,11 +24,18 @@ export default function Home() {
       <main>
         <Hero />
         
-        <Battlement className="bg-mist text-navy" />
+        <BalanceSection />
+        
+        <Battlement className="bg-mist text-paper" color="#f1f5f9" />
         <TrustStrip />
         
-        <Battlement className="bg-paper text-navy" />
+        <Battlement className="bg-navy text-mist" color="#1C3461" />
+        <ProjectStrip />
+        
+        <Battlement className="bg-paper text-navy" color="#FFFFFF" />
         <Problems />
+        
+        <ProfessionalBacking />
         
         <Battlement className="bg-paper text-navy" />
         <WhoWeServe />

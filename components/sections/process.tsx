@@ -19,15 +19,15 @@ function SignalBars({ count }: { count: number }) {
   return (
     <div className="flex items-end gap-1 h-8" aria-hidden="true">
       <div
-        className={`w-2 rounded-sm ${count >= 1 ? 'bg-orange' : 'bg-line'}`}
+        className={`w-2 rounded-sm ${count >= 1 ? 'bg-red' : 'bg-line'}`}
         style={{ height: '30%' }}
       />
       <div
-        className={`w-2 rounded-sm ${count >= 2 ? 'bg-orange' : 'bg-line'}`}
+        className={`w-2 rounded-sm ${count >= 2 ? 'bg-red' : 'bg-line'}`}
         style={{ height: '65%' }}
       />
       <div
-        className={`w-2 rounded-sm ${count >= 3 ? 'bg-orange' : 'bg-line'}`}
+        className={`w-2 rounded-sm ${count >= 3 ? 'bg-red' : 'bg-line'}`}
         style={{ height: '100%' }}
       />
     </div>
@@ -52,7 +52,7 @@ export function Process() {
               </div>
               <div className="flex-1">
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display font-extrabold text-orange text-lg">
+                  <span className="font-display font-extrabold text-red text-lg">
                     {index + 1}.
                   </span>
                   <h3 className="font-display font-bold text-navy text-lg leading-snug">

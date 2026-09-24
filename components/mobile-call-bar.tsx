@@ -23,7 +23,7 @@ export function MobileCallBar() {
     >
       <a
         href={SITE.phoneHref}
-        className="flex items-center justify-center w-full bg-orange text-white font-display font-bold text-base py-4 shadow-lg"
+        className="flex items-center justify-center w-full bg-red text-white font-display font-bold text-base py-4 shadow-lg"
         aria-label={`Hívás: ${SITE.phone}`}
       >
         <svg

@@ -8,15 +8,12 @@ import { SITE } from '@/lib/site';
 import { Analytics } from '@/components/analytics';
 import { CookieBanner } from '@/components/cookie-banner';
 
-export const viewport = {
-  themeColor: '#1C3461',
-};
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: 'Számítógép- és internetszerelő Székesfehérváron — IT Fehérvár',
+  title: 'IT segítség és informatikus Székesfehérváron | IT Fehérvár',
   description:
-    'Kiszállunk Székesfehérváron és Fejér vármegyében: internet, wifi, lassú gép, nyomtató, vírus. Cégeknek és otthonra. Hívjon: +36 70 273 5532.',
+    'Helyi IT segítség cégeknek és magánszemélyeknek Székesfehérváron: számítógép, internet, Wi-Fi, hálózat, Microsoft 365, hibajavítás és új IT kialakítás.',
+  themeColor: '#1C3461',
   alternates: {
     canonical: SITE.url,
   },
@@ -37,14 +34,14 @@ export const metadata: Metadata = {
     locale: 'hu_HU',
     url: SITE.url,
     siteName: SITE.name,
-    title: 'Számítógép- és internetszerelő Székesfehérváron — IT Fehérvár',
+    title: 'IT segítség és informatikus Székesfehérváron | IT Fehérvár',
     description:
-      'Kiszállunk Székesfehérváron és Fejér vármegyében: internet, wifi, lassú gép, nyomtató, vírus. Cégeknek és otthonra. Hívjon: +36 70 273 5532.',
+      'Helyi IT segítség cégeknek és magánszemélyeknek Székesfehérváron: számítógép, internet, Wi-Fi, hálózat, Microsoft 365, hibajavítás és új IT kialakítás.',
     emails: [SITE.email],
     phoneNumbers: [SITE.phone],
     images: [
       {
-        url: '/og-cover.png',
+        url: '/brand/it-fehervar-logo.png',
         width: 1200,
         height: 630,
         alt: 'IT Fehérvár — számítógép- és internetszerelő Székesfehérváron',
@@ -53,10 +50,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Számítógép- és internetszerelő Székesfehérváron — IT Fehérvár',
+    title: 'IT segítség és informatikus Székesfehérváron | IT Fehérvár',
     description:
-      'Kiszállunk Székesfehérváron és Fejér vármegyében: internet, wifi, lassú gép, nyomtató, vírus. Cégeknek és otthonra. Hívjon: +36 70 273 5532.',
-    images: ['/og-cover.png'],
+      'Helyi IT segítség cégeknek és magánszemélyeknek Székesfehérváron: számítógép, internet, Wi-Fi, hálózat, Microsoft 365, hibajavítás és új IT kialakítás.',
+    images: ['/brand/it-fehervar-logo.png'],
   },
   robots: {
     index: true,

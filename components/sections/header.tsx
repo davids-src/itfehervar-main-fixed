@@ -11,7 +11,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <a
             href={SITE.phoneHref}
-            className="font-display font-bold text-navy text-lg leading-none hover:text-orange transition-colors"
+            className="font-display font-bold text-navy text-lg leading-none hover:text-red transition-colors"
             aria-label={`Hívja a ${SITE.phone} telefonszámot`}
           >
             {SITE.phone}

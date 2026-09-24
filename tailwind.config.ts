@@ -13,9 +13,9 @@ const config: Config = {
           DEFAULT: '#1C3461',
           deep: '#14264B',
         },
-        orange: {
-          DEFAULT: '#D9482B',
-          wash: '#FBE7E1',
+        red: {
+          DEFAULT: '#E3262E',
+          hover: '#C91F27',
         },
         mist: '#EEF2F8',
         paper: '#FFFFFF',
