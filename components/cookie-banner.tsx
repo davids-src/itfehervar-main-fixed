@@ -36,7 +36,7 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-label="Cookie hozzájárulás"
-      className="fixed bottom-0 left-0 right-0 z-50 bg-navy-deep text-white px-5 py-4 shadow-lg"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-navy text-white px-5 py-4 shadow-lg"
     >
       <div className="mx-auto max-w-content flex flex-col sm:flex-row sm:items-center gap-3">
         <p className="text-sm leading-relaxed flex-1">

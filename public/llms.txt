@@ -1,25 +1,28 @@
 # IT Fehérvár
 
-> Helyszíni informatikai hibaelhárítás Székesfehérváron
-> és Fejér vármegyében, kisebb cégeknek, boltoknak, irodáknak és
-> magánszemélyeknek.
+> Helyi, problémafókuszú informatikai segítség Székesfehérváron.
+> Magánszemélyeknek és cégeknek. Helyszíni és távoli segítség.
 
 ## Mit vállalunk
-Internet- és wifihibák, lassú vagy el nem induló gép, nyomtató-
-problémák, vírusgyanú, új gép beüzemelése és adatátköltöztetés,
-céges hálózat és közös mappa beállítása, céges e-mail beállítása,
-rendszeres mentés helyszíni kiszállással.
+Számítógép, Wi-Fi, internet, nyomtató, hálózat, Microsoft 365,
+NAS/mentés, új eszköz beállítása, új iroda alap IT.
 
 ## Kapcsolat
 Telefon: +36 70 273 5532
 E-mail: szia@itfehervar.hu
-Elérhetőség: hétköznap 8–20, szombat 9–14
-Terület: Székesfehérvár és Fejér vármegye
+Terület: Székesfehérvár és környező Fejér vármegyei helyszínek
+Űrlap: https://itfehervar.hu/kapcsolat
 
 ## Árazás
-Nincs fix árlista — telefonon egyeztetett, helyszínen a munka
-megkezdése előtt megerősített ár. Számlát minden esetben adunk,
-magánszemélyeknek és cégeknek egyaránt.
+Az árat a feladat alapján egyeztetjük. Nincs mesterséges „ettől” árlista.
+
+## Oldalak
+- https://itfehervar.hu/
+- https://itfehervar.hu/otthoni-it
+- https://itfehervar.hu/ceges-it
+- https://itfehervar.hu/wifi-halozat
+- https://itfehervar.hu/szamitogep-segitseg
+- https://itfehervar.hu/kapcsolat
 
 ## Üzemeltető
 Az IT Fehérvár szolgáltatást a SIROTECH Kft. nyújtja

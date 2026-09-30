@@ -1,5 +1,4 @@
 import { Logo } from '@/components/logo';
-import { Battlement } from '@/components/battlement';
 
 export function LegalPage({
   title,
@@ -17,20 +16,16 @@ export function LegalPage({
           </a>
         </div>
       </header>
-      <Battlement color="#1C3461" className="bg-paper" />
-      <main className="bg-paper">
+      <main className="bg-paper pb-16">
         <article className="mx-auto max-w-content px-5 py-12 sm:py-16">
-          <h1 className="font-display font-extrabold text-navy text-3xl sm:text-3xl tracking-tight">
+          <h1 className="font-display font-bold text-navy text-3xl tracking-tight">
             {title}
           </h1>
           <div className="mt-8 prose prose-sm max-w-none text-ink leading-relaxed space-y-4">
             {children}
           </div>
           <div className="mt-12">
-            <a
-              href="/"
-              className="text-navy font-medium hover:text-red transition-colors"
-            >
+            <a href="/" className="text-navy font-medium hover:text-red transition-colors">
               ← Vissza a főoldalra
             </a>
           </div>

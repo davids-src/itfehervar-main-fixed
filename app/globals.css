@@ -5,13 +5,12 @@
 @layer base {
   :root {
     --background: #FFFFFF;
-    --foreground: #16223B;
-    --font-display: 'Archivo', system-ui, sans-serif;
-    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+    --foreground: #18212A;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
   }
 
   * {
-    border-color: #D3DDEC;
+    border-color: #D8DEE3;
   }
 
   html {
@@ -28,19 +27,19 @@
   }
 
   ::selection {
-    background-color: #E3262E;
+    background-color: #E00018;
     color: #FFFFFF;
   }
 }
 
 @layer base {
-  /* Visible focus outline on all interactive elements */
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
   textarea:focus-visible,
+  select:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid #E3262E;
+    outline: 2px solid #E00018;
     outline-offset: 2px;
     border-radius: 2px;
   }

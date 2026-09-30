@@ -1,38 +1,32 @@
-export function renderCustomerConfirmation(data: { name: string, phone: string, message?: string, siteUrl: string }) {
+export function renderCustomerConfirmation() {
   return `
     <html>
-      <body style="font-family: sans-serif; line-height: 1.5; color: #1C3461; margin: 0; padding: 20px; background-color: #f9f9fa;">
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
+      <body style="font-family: 'Source Sans 3', Arial, sans-serif; line-height: 1.5; color: #18212A; margin: 0; padding: 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F7F8; padding: 24px 0;">
           <tr>
-            <td style="padding: 20px; background-color: #1C3461; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px;">IT Fehérvár</h1>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 30px;">
-              <h2 style="color: #1C3461; margin-top: 0;">Köszönjük, hogy megkeresett minket, ${data.name}!</h2>
-              <p style="color: #444; font-size: 16px;">
-                Megkaptuk az üzenetét, és általában egy órán belül visszahívjuk a <strong>${data.phone}</strong> számon.
-              </p>
-              
-              <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                <h3 style="margin-top: 0; font-size: 14px; color: #666; text-transform: uppercase;">A megadott adatai:</h3>
-                <p style="margin: 0; color: #333;"><strong>Név:</strong> ${data.name}</p>
-                <p style="margin: 5px 0 0 0; color: #333;"><strong>Telefonszám:</strong> ${data.phone}</p>
-                ${data.message ? `<p style="margin: 5px 0 0 0; color: #333;"><strong>Üzenet:</strong> ${data.message}</p>` : ''}
-              </div>
-
-              <p style="color: #444; font-size: 16px;">
-                Ha közben sürgőssé vált a probléma, hívjon minket azonnal:<br/>
-                <a href="tel:+36702735532" style="color: #D9482B; font-weight: bold; font-size: 18px; text-decoration: none;">+36 70 273 5532</a>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td style="background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888;">
-              <p style="margin: 0;">SIROTECH Kft. — IT Fehérvár</p>
-              <p style="margin: 5px 0 0 0;">Ez egy automatikus visszaigazoló üzenet a visszahívás-kérésről.</p>
-              <p style="margin: 5px 0 0 0;"><a href="${data.siteUrl}/adatkezeles" style="color: #1C3461; text-decoration: underline;">Adatkezelési tájékoztató</a></p>
+            <td align="center">
+              <table width="100%" style="max-width:600px; background:#FFFFFF; border-collapse:collapse;">
+                <tr>
+                  <td style="background:#102235; padding:20px; color:#FFFFFF;">
+                    <strong style="font-size:18px;">IT Fehérvár</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:28px 24px;">
+                    <p style="margin:0 0 16px 0; font-size:16px; color:#18212A;">
+                      Köszönjük, hogy írt az IT Fehérvár oldalán. Az elküldött adatokat megkaptuk. A feladat részleteinek egyeztetéséhez a megadott elérhetőségen jelentkezünk. Sürgős esetben hívjon minket: +36 70 273 5532.
+                    </p>
+                    <p style="margin:0;">
+                      <a href="tel:+36702735532" style="display:inline-block; padding:10px 18px; background:#E00018; color:#FFFFFF; text-decoration:none; border-radius:4px; font-weight:700;">Hívás: +36 70 273 5532</a>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background:#F5F7F8; padding:16px 24px; font-size:12px; color:#65717C;">
+                    SIROTECH Kft. — IT Fehérvár
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>

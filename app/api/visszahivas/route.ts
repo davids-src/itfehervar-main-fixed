@@ -3,11 +3,14 @@ import nodemailer from 'nodemailer';
 import { renderAdminNotification } from '@/lib/email-templates/admin-notification';
 import { renderCustomerConfirmation } from '@/lib/email-templates/customer-confirmation';
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
 
-    // Honeypot check
     const honeypot = formData.get('website');
     if (honeypot) {
       return NextResponse.json({ ok: true }, { status: 200 });
@@ -15,18 +18,16 @@ export async function POST(request: Request) {
 
     const name = (formData.get('name') as string)?.trim();
     const phone = (formData.get('phone') as string)?.trim();
-    const customer_type = (formData.get('customer_type') as string)?.trim();
-    const request_type = (formData.get('request_type') as string)?.trim();
+    const problem = (formData.get('problem') as string)?.trim();
+    const segment = (formData.get('segment') as string)?.trim();
+    const location = (formData.get('location') as string)?.trim();
+    const email = (formData.get('email') as string)?.trim();
     const message = (formData.get('message') as string)?.trim();
     const first_touch = (formData.get('first_touch') as string)?.trim();
     const last_touch = (formData.get('last_touch') as string)?.trim();
-    const location = (formData.get('location') as string)?.trim() || 'ismeretlen hely';
 
-    if (!name || !phone) {
-      return NextResponse.json(
-        { error: 'Hiányzó kötelező mező' },
-        { status: 400 },
-      );
+    if (!name || !phone || !problem || !segment || !location || !message) {
+      return NextResponse.json({ error: 'Hiányzó kötelező mező' }, { status: 400 });
     }
 
     const smtpHost = process.env.SMTP_HOST;
@@ -37,11 +38,8 @@ export async function POST(request: Request) {
     const adminEmail = process.env.SIROTECH_ADMIN_EMAIL;
 
     if (!smtpHost || !smtpUser || !smtpPass || !adminEmail) {
-      console.error('SMTP or Admin Email env vars not configured', { smtpHost, smtpUser, smtpPass, adminEmail });
-      return NextResponse.json(
-        { error: 'Szolgáltatás nem elérhető' },
-        { status: 503 },
-      );
+      console.error('SMTP or Admin Email env vars not configured');
+      return NextResponse.json({ error: 'Szolgáltatás nem elérhető' }, { status: 503 });
     }
 
     const transporter = nodemailer.createTransport({
@@ -63,27 +61,47 @@ export async function POST(request: Request) {
       timeZone: 'Europe/Budapest',
     }).format(new Date());
 
-    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || undefined;
+    const ip =
+      request.headers.get('x-forwarded-for') ||
+      request.headers.get('x-real-ip') ||
+      undefined;
 
-    // Send Admin Email
-    const adminHtml = renderAdminNotification({ name, phone, customer_type, request_type, location, message, first_touch, last_touch, ip, date });
-    
-    const reqTypeStr = request_type || 'N/A';
-    const custTypeStr = customer_type || 'N/A';
+    const validEmail = email && isValidEmail(email) ? email : undefined;
+
+    const adminHtml = renderAdminNotification({
+      name,
+      phone,
+      problem,
+      segment,
+      location,
+      email: validEmail,
+      message,
+      first_touch,
+      last_touch,
+      ip,
+      date,
+    });
 
     await transporter.sendMail({
       from: `"IT Fehérvár" <${smtpUser}>`,
       to: adminEmail,
-      subject: `[IT FEHÉRVÁR] ${reqTypeStr} | ${custTypeStr} | ${location}`,
+      subject: `IT Fehérvár – ${problem} – ${location} – ${name}`,
+      replyTo: validEmail,
       html: adminHtml,
     });
+
+    if (validEmail) {
+      await transporter.sendMail({
+        from: `"IT Fehérvár" <${smtpUser}>`,
+        to: validEmail,
+        subject: 'Megkaptuk a megkeresését – IT Fehérvár',
+        html: renderCustomerConfirmation(),
+      });
+    }
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
     console.error('Callback form error:', error);
-    return NextResponse.json(
-      { error: 'Nem sikerült elküldeni' },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: 'Nem sikerült elküldeni' }, { status: 500 });
   }
 }

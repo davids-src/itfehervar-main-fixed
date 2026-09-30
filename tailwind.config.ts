@@ -10,21 +10,22 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#1C3461',
-          deep: '#14264B',
+          DEFAULT: '#102235',
+          secondary: '#173049',
         },
         red: {
-          DEFAULT: '#E3262E',
-          hover: '#C91F27',
+          DEFAULT: '#E00018',
+          hover: '#C70016',
         },
-        mist: '#EEF2F8',
         paper: '#FFFFFF',
-        ink: '#16223B',
-        line: '#D3DDEC',
+        mist: '#F5F7F8',
+        ink: '#18212A',
+        muted: '#65717C',
+        line: '#D8DEE3',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         base: ['1rem', { lineHeight: '1.5' }],
@@ -38,7 +39,7 @@ const config: Config = {
         content: '1080px',
       },
       screens: {
-        'xs': '420px',
+        xs: '420px',
       },
     },
   },

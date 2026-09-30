@@ -1,0 +1,18 @@
+old_url,new_url,status,notes
+/,/,200,canonical home
+/otthoni-it,/otthoni-it,200,new canonical
+/ceges-it,/ceges-it,200,new canonical
+/wifi-halozat,/wifi-halozat,200,new canonical
+/szamitogep-segitseg,/szamitogep-segitseg,200,new canonical
+/kapcsolat,/kapcsolat,200,new canonical
+/adatvedelem,/adatvedelem,200,renamed from /adatkezeles
+/aszf,/aszf,200,canonical legal
+/adatkezeles,/adatvedelem,301,privacy rename
+/szamitogep-szerviz-szekesfehervar,/szamitogep-segitseg,301,remove doorway SEO slug
+/wifi-internet-segitseg-szekesfehervar,/wifi-halozat,301,remove doorway SEO slug
+/ceges-it-szekesfehervar,/ceges-it,301,remove doorway SEO slug
+/halozatepites-szekesfehervar,/wifi-halozat,301,consolidate network pages
+/uj-iroda-it,/ceges-it,301,fold into céges IT
+/informatikus-mor,,410,forbidden city doorway — do not create
+/informatikus-bicske,,410,forbidden city doorway — do not create
+/informatikus-gardony,,410,forbidden city doorway — do not create

@@ -1,10 +1,15 @@
+/**
+ * Canonical indexable routes only.
+ * lastModified: set only when page content actually changes — never Date.now() at build.
+ * changefreq and priority intentionally omitted.
+ */
 export const ROUTES = [
-  { path: '/', changeFrequency: 'monthly', priority: 1.0, lastModified: '2026-09-24' },
-  { path: '/szamitogep-szerviz-szekesfehervar', changeFrequency: 'monthly', priority: 0.8, lastModified: '2026-09-24' },
-  { path: '/wifi-internet-segitseg-szekesfehervar', changeFrequency: 'monthly', priority: 0.8, lastModified: '2026-09-24' },
-  { path: '/ceges-it-szekesfehervar', changeFrequency: 'monthly', priority: 0.8, lastModified: '2026-09-24' },
-  { path: '/halozatepites-szekesfehervar', changeFrequency: 'monthly', priority: 0.8, lastModified: '2026-09-24' },
-  { path: '/uj-iroda-it', changeFrequency: 'monthly', priority: 0.8, lastModified: '2026-09-24' },
-  { path: '/aszf', changeFrequency: 'yearly', priority: 0.3, lastModified: '2026-09-01' },
-  { path: '/adatkezeles', changeFrequency: 'yearly', priority: 0.3, lastModified: '2026-09-01' },
+  { path: '/', lastModified: '2026-09-30' },
+  { path: '/otthoni-it', lastModified: '2026-09-30' },
+  { path: '/ceges-it', lastModified: '2026-09-30' },
+  { path: '/wifi-halozat', lastModified: '2026-09-30' },
+  { path: '/szamitogep-segitseg', lastModified: '2026-09-30' },
+  { path: '/kapcsolat', lastModified: '2026-09-30' },
+  { path: '/adatvedelem', lastModified: '2026-09-30' },
+  { path: '/aszf', lastModified: '2026-09-30' },
 ] as const;
